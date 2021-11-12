@@ -13,7 +13,7 @@ import com.example.fragmentviewmodeldatalive.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
 
-    private val viewModel: MainViewModel = MainViewModel()
+    private val viewModel: MainViewModel by viewModels()
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
