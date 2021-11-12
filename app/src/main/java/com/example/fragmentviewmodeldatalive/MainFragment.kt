@@ -12,9 +12,8 @@ import com.example.fragmentviewmodeldatalive.databinding.FragmentMainBinding
 
 
 class MainFragment : Fragment() {
-   // private val viewModel: MainViewModel = MainViewModel()
-    private val viewModel: MainViewModel by viewModels ()
 
+    private val viewModel: MainViewModel = MainViewModel()
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
@@ -29,16 +28,10 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.textView.text = "Ibrahim Farhan"
-
-
+        binding.textView.text = viewModel.score.toString()
         binding.button.setOnClickListener {
-
-            findNavController().navigate(
-                MainFragmentDirections.actionMainFragmentToSecondFragment(
-                    name = binding.textView.text.toString()
-                )
-            )
+            viewModel.printScore()
+           binding.textView.text = viewModel.score.toString()
         }
 
     }
