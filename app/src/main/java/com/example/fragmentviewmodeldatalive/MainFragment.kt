@@ -28,12 +28,12 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.textView.text = viewModel.score.toString()
+
         binding.button.setOnClickListener {
             viewModel.printScore()
-           binding.textView.text = viewModel.score.toString()
         }
 
+        viewModel.score.observe(viewLifecycleOwner, {binding.textView.text = it.toString()})
     }
 
     override fun onDestroy() {

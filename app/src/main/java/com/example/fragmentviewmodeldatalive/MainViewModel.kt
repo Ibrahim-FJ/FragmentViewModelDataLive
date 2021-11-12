@@ -6,12 +6,10 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel: ViewModel() {
 
-    private var _score: Int = 0
-    val score: Int get() = _score
-
-
+    private var _score: MutableLiveData<Int> = MutableLiveData(0)
+     val score: LiveData<Int> get() = _score
 
     fun printScore(){
-       _score += 1
+       _score.value = _score.value?.plus(1)
     }
 }
